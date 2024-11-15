@@ -10,6 +10,7 @@
     "@testing-library/react": "^11.2.2",
     "@testing-library/user-event": "^12.6.0",
     "axios": "^1.6.2",
+    "dayjs": "^1.11.13",
     "firebase": "^8.2.1",
     "fullcalendar": "^6.1.15",
     "react": "^17.0.1",
@@ -43,6 +44,9 @@
     ]
   },
   "devDependencies": {
-    "@types/react-dom": "^18.2.18"
+    "@types/react-dom": "^18.2.18",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.49",
+    "tailwindcss": "^3.4.15"
   }
 }
