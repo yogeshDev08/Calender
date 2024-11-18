@@ -1,0 +1,35 @@
+.fc-timegrid-slot-lane {
+    height: 100px !important; /* Adjust slot height as needed */
+    /* max-height: 250px !important; */
+  }
+  .fc-timegrid-event {
+    margin-bottom: 5px; /* Adjusts the gap between stacked events */
+  }
+  
+  /* Adjust the height of each event for better visibility */
+  .fc-timegrid-event {
+    height: 40px; /* Set a fixed height */
+    overflow: hidden; /* Prevent text overflow */
+  }
+  .fc .fc-daygrid-day-frame{
+    min-height: 70vh;
+  }
+
+
+  /* Hides the hourly slots */
+  /* .fc-timegrid-slots {
+    display: none !important; 
+  } */
+
+  /* .fc-timegrid-body {
+    display: none !important;
+  } */
+  /* .fc-scrollgrid-section-liquid {
+    display: none !important;
+  } */
+
+  /* .fc-daygrid-body-natural .fc-scrollgrid-sync-table {
+    height: 80vh;
+  } */
+  
+  

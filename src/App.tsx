@@ -1,13 +1,20 @@
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
 import Appbar from './components/AppBar';
 import Calendar from './components/Calender/Calender';
+import Kanban from './components/Calender/Kanban';
 
 function App() {
 
   return (
     <div className="App">
       <Appbar />
-      <Calendar />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/details" element={<Kanban />} />
+          <Route path="/calender" element={<Calendar />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
