@@ -15,7 +15,7 @@ const Ticket = (props) => {
     }
 
     return <>
-        <div style={{ display:'flex', justifyContent:'space-between', padding: "10px", background: "lightblue", border: "1px solid blue" }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', padding: "10px", background: "lightblue", border: "1px solid blue" }}>
             <div>
                 <div>
                     <h2>{extendedProps?.title}</h2>
@@ -25,9 +25,9 @@ const Ticket = (props) => {
                     <h5>{extendedProps?.description}</h5>
                 </div>
             </div>
-            <div style={{ display:'flex', flexDirection:'column' }}>
+            <div style={{ display: 'flex', flexDirection: 'column' }}>
                 <Button size='small' onClick={() => { handleNavigate() }}><EditIcon /></Button>
-                <Button size='small' onClick={() => { handleDeleteEvent() }}><DeleteIcon /></Button>
+                <Button size='small' onClick={() => handleDeleteEvent(extendedProps?.id)} ><DeleteIcon /></Button>
             </div>
         </div>
     </>
