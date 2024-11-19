@@ -44,13 +44,14 @@ const Calendar = () => {
             backgroundColor: '#d0d0d0', // Optional: Custom rail color
         },
         '& .MuiSlider-thumb': {
-            width: 16, // Increase the thumb size
-            height: 16, // Increase the thumb size
-            backgroundColor: '#52af77',
-            boxShadow: '0 2px 4px rgba(0, 0, 0, 0.2)',
-            '&:hover': {
-                boxShadow: '0 4px 8px rgba(0, 0, 0, 0.3)',
-            },
+            // width: 16, // Increase the thumb size
+            // height: 16, // Increase the thumb size
+            // backgroundColor: '#52af77',
+            // boxShadow: '0 2px 4px rgba(0, 0, 0, 0.2)',
+            // '&:hover': {
+            //     boxShadow: '0 4px 8px rgba(0, 0, 0, 0.3)',
+            // },
+            display: "none"
         },
         '& .MuiSlider-valueLabel': {
             fontSize: 14,
