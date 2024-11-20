@@ -14,22 +14,3 @@
   .fc .fc-daygrid-day-frame{
     min-height: 70vh;
   }
-
-
-  /* Hides the hourly slots */
-  /* .fc-timegrid-slots {
-    display: none !important; 
-  } */
-
-  /* .fc-timegrid-body {
-    display: none !important;
-  } */
-  /* .fc-scrollgrid-section-liquid {
-    display: none !important;
-  } */
-
-  /* .fc-daygrid-body-natural .fc-scrollgrid-sync-table {
-    height: 80vh;
-  } */
-  
-  

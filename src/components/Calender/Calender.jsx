@@ -12,8 +12,8 @@ import Ticket from "./Ticket";
 import './calendar.css'
 import CarIcon from "../icons/CarIcon";
 import EditDataModal from "./EditDataModal";
-
-
+// import DatePicker from "react-datepicker";
+// import "react-datepicker/dist/react-datepicker.css";
 
 const Calendar = () => {
     const [currentEvents, setCurrentEvents] = useState([]);
@@ -29,7 +29,6 @@ const Calendar = () => {
             prevEvents.filter((event) => event.id !== eventId)
         );
     };
-
 
     const PrettoSlider = styled(Slider)({
         color: '#52af77',
@@ -125,9 +124,6 @@ const Calendar = () => {
         setOpenModal(false);
     };
 
-
-    console.log("currentEvents", currentEvents)
-
     return (<>
         <Box m="20px">
             <Box flex="1 1 100%" ml="15px" >
@@ -144,9 +140,7 @@ const Calendar = () => {
                                 description: eventInfo.event.extendedProps.description,
                                 start: eventInfo.event.start
                             }}
-
                         />)}
-
                     dayHeaderContent={(arg) => {
                         const weekday = arg.date.toLocaleString('en', { weekday: 'short' }); // Get weekday (Mon, Tue, etc.)
                         const day = arg.date.getDate(); // Get the day number (11, 12, etc.)
@@ -162,17 +156,10 @@ const Calendar = () => {
                                     <CarIcon />
 
                                 </div>
-                                <div style={{ display: "flex", justifyContent: "space-around", width: "180px", alignItems: "center" }}>
-                                    <PrettoSlider
-                                        valueLabelDisplay="off"
-                                        aria-label="pretto slider"
-                                        defaultValue={60}
-                                    />
-                                    <CarIcon />
-                                </div>
                             </div>
                         )
                     }}
+
                     plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin, listPlugin]}
                     headerToolbar={{
                         left: "prev,next today",
@@ -191,6 +178,7 @@ const Calendar = () => {
                 />
             </Box>
 
+         
             <EditDataModal
                 eventDescription={eventDescription}
                 eventTitle={eventTitle}

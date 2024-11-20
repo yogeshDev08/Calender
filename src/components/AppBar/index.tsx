@@ -24,7 +24,7 @@ function Appbar() {
                         <MenuIcon />
                     </IconButton>
                     <Typography variant="h6" className={classes.title}>
-                        Todo App
+                        Full Calendar Demo
                     </Typography>
                 </Toolbar>
             </AppBar>

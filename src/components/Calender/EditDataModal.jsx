@@ -9,22 +9,7 @@ import {
 } from "@material-ui/core";
 
 const EditDataModal = (props) => {
-    const { eventDescription,
-        eventTitle,
-        openModal,
-        setOpenModal,
-        editEventId,
-        handleSaveEvent,
-        setEventTitle,
-        setEventDescription,
-
-        setCurrentEvents,
-        selectedDate, } = props
-
-
-   
-
-
+    const { eventDescription, eventTitle, openModal, setOpenModal, editEventId, handleSaveEvent, setEventTitle, setEventDescription, } = props
 
     return <Modal open={openModal} onClose={() => setOpenModal(false)}>
         <Box
