@@ -21,6 +21,7 @@ const EditDataModal = (props) => {
         setEventDescription,
         setStartDate,
         setEndDate,
+        extendedProps,
     } = props;
 
     return (
@@ -46,7 +47,7 @@ const EditDataModal = (props) => {
                 />
 
                 {/* Event Description */}
-                <TextField
+                {/* <TextField
                     label="Event Description"
                     value={eventDescription}
                     onChange={(e) => setEventDescription(e.target.value)}
@@ -54,7 +55,7 @@ const EditDataModal = (props) => {
                     margin="normal"
                     multiline
                     rows={3}
-                />
+                /> */}
 
                 {/* Start Date */}
                 <TextField

@@ -45,6 +45,7 @@ const Calendar = () => {
                         contactInformation: appointment.contactInformation,
                         jobs: appointment.jobs,
                         status: appointment.status,
+                        ...appointment
                     },
                 });
             });
@@ -153,7 +154,8 @@ const Calendar = () => {
                                 id: eventInfo.event.id,
                                 title: eventInfo.event.title,
                                 description: eventInfo.event.extendedProps.description,
-                                start: eventInfo.event.start
+                                start: eventInfo.event.start,
+                                extendedProps: eventInfo.event.extendedProps
                             }}
                             setOpenModal={setOpenModal}
                             setEventTitle={setEventTitle}
@@ -198,12 +200,12 @@ const Calendar = () => {
                     eventClick={(selected) => { handleEventClick(selected) }}
                     defaultAllDay={true}
                     initialEvents={currentEvents}
-                    // initialEvents={[{
-                    //     id: "3a43c1e7-f29b-4ddd-8331-efab4c5fc9ac",
-                    //     start: "2024-11-19T00:00:00Z",
-                    //     title: "FERRER PHILIPPE (MEGANE II)",
-                    //     allDay: true
-                    // }]}
+                // initialEvents={[{
+                //     id: "3a43c1e7-f29b-4ddd-8331-efab4c5fc9ac",
+                //     start: "2024-11-19T00:00:00Z",
+                //     title: "FERRER PHILIPPE (MEGANE II)",
+                //     allDay: true
+                // }]}
                 />
             </Box>
             <EditDataModal
