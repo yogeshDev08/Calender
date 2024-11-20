@@ -1,5 +1,4 @@
-import React, { useState } from 'react'
-
+import React from "react";
 import {
     Box,
     Modal,
@@ -9,43 +8,92 @@ import {
 } from "@material-ui/core";
 
 const EditDataModal = (props) => {
-    const { eventDescription, eventTitle, openModal, setOpenModal, editEventId, handleSaveEvent, setEventTitle, setEventDescription, } = props
+    const {
+        eventDescription,
+        eventTitle,
+        startDate,
+        endDate,
+        openModal,
+        setOpenModal,
+        editEventId,
+        handleSaveEvent,
+        setEventTitle,
+        setEventDescription,
+        setStartDate,
+        setEndDate,
+    } = props;
 
-    return <Modal open={openModal} onClose={() => setOpenModal(false)}>
-        <Box
-            p="20px"
-            borderRadius="8px"
-            bgcolor="white"
-            width="300px"
-            mx="auto"
-            my="15vh"
-            textAlign="center"
-        >
-            <Typography variant="h6">{editEventId ? "Edit Event" : "Add Event"}</Typography>
-            <TextField
-                label="Event Title"
-                value={eventTitle}
-                onChange={(e) => setEventTitle(e.target.value)}
-                fullWidth
-                margin="normal"
-            />
-            <TextField
-                label="Event Description"
-                value={eventDescription}
-                onChange={(e) => setEventDescription(e.target.value)}
-                fullWidth
-                margin="normal"
-            />
-            <Box mt="20px" display="flex" justifyContent="space-around">
-                <Button variant="contained" color="primary" onClick={handleSaveEvent}>
-                    Save
-                </Button>
-                <Button variant="outlined" onClick={() => setOpenModal(false)}>
-                    Cancel
-                </Button>
+    return (
+        <Modal open={openModal} onClose={() => setOpenModal(false)}>
+            <Box
+                p="20px"
+                borderRadius="8px"
+                bgcolor="white"
+                width="400px"
+                mx="auto"
+                my="15vh"
+                textAlign="center"
+            >
+                <Typography variant="h6">{editEventId ? "Edit Event" : "Add Event"}</Typography>
+
+                {/* Event Title */}
+                <TextField
+                    label="Event Title"
+                    value={eventTitle}
+                    onChange={(e) => setEventTitle(e.target.value)}
+                    fullWidth
+                    margin="normal"
+                />
+
+                {/* Event Description */}
+                <TextField
+                    label="Event Description"
+                    value={eventDescription}
+                    onChange={(e) => setEventDescription(e.target.value)}
+                    fullWidth
+                    margin="normal"
+                    multiline
+                    rows={3}
+                />
+
+                {/* Start Date */}
+                <TextField
+                    label="Start Date"
+                    type="date"
+                    value={startDate}
+                    onChange={(e) => setStartDate(e.target.value)}
+                    fullWidth
+                    margin="normal"
+                    InputLabelProps={{
+                        shrink: true,
+                    }}
+                />
+
+                {/* End Date */}
+                <TextField
+                    label="End Date"
+                    type="date"
+                    value={endDate}
+                    onChange={(e) => setEndDate(e.target.value)}
+                    fullWidth
+                    margin="normal"
+                    InputLabelProps={{
+                        shrink: true,
+                    }}
+                />
+
+                {/* Buttons */}
+                <Box mt="20px" display="flex" justifyContent="space-around">
+                    <Button variant="contained" color="primary" onClick={handleSaveEvent}>
+                        Save
+                    </Button>
+                    <Button variant="outlined" onClick={() => setOpenModal(false)}>
+                        Cancel
+                    </Button>
+                </Box>
             </Box>
-        </Box>
-    </Modal>
-}
+        </Modal>
+    );
+};
 
-export default EditDataModal
+export default EditDataModal;

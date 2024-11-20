@@ -22,7 +22,8 @@ const Calendar = () => {
     const [eventTitle, setEventTitle] = useState("");
     const [eventDescription, setEventDescription] = useState("");
     const [editEventId, setEditEventId] = useState(null);
-
+    const [startDate, setStartDate] = useState("");
+    const [endDate, setEndDate] = useState("");
 
     const handleDeleteEvent = (eventId) => {
         setCurrentEvents((prevEvents) =>
@@ -43,13 +44,6 @@ const Calendar = () => {
             backgroundColor: '#d0d0d0', // Optional: Custom rail color
         },
         '& .MuiSlider-thumb': {
-            // width: 16, // Increase the thumb size
-            // height: 16, // Increase the thumb size
-            // backgroundColor: '#52af77',
-            // boxShadow: '0 2px 4px rgba(0, 0, 0, 0.2)',
-            // '&:hover': {
-            //     boxShadow: '0 4px 8px rgba(0, 0, 0, 0.3)',
-            // },
             display: "none"
         },
         '& .MuiSlider-valueLabel': {
@@ -140,6 +134,12 @@ const Calendar = () => {
                                 description: eventInfo.event.extendedProps.description,
                                 start: eventInfo.event.start
                             }}
+                            setOpenModal={setOpenModal}
+                            setEventTitle={setEventTitle}
+                            setEventDescription={setEventDescription}
+                            setEditEventId={setEditEventId}
+                            setSelectedDate={setSelectedDate}
+
                         />)}
                     dayHeaderContent={(arg) => {
                         const weekday = arg.date.toLocaleString('en', { weekday: 'short' }); // Get weekday (Mon, Tue, etc.)
@@ -178,18 +178,18 @@ const Calendar = () => {
                 />
             </Box>
 
-         
             <EditDataModal
-                eventDescription={eventDescription}
                 eventTitle={eventTitle}
+                setEventTitle={setEventTitle}
+                eventDescription={eventDescription}
+                setEventDescription={setEventDescription}
+                startDate={startDate}
+                setStartDate={setStartDate}
+                endDate={endDate}
+                setEndDate={setEndDate}
                 openModal={openModal}
                 setOpenModal={setOpenModal}
-                editEventId={editEventId}
-                setCurrentEvents={setCurrentEvents}
-                selectedDate={selectedDate}
                 handleSaveEvent={handleSaveEvent}
-                setEventTitle={setEventTitle}
-                setEventDescription={setEventDescription}
             />
         </Box>
     </>
