@@ -7,6 +7,7 @@ import DeleteIcon from '../icons/DeleteIcon';
 const Ticket = (props) => {
     const { handleDeleteEvent, extendedProps, setOpenModal, setEventTitle, setEventDescription, setEditEventId, setSelectedDate } = props;
 
+
     const navigate = useNavigate();
     const [isExpanded, setIsExpanded] = useState(false);
 
@@ -28,7 +29,7 @@ const Ticket = (props) => {
     return (
         <div className='p-2 bg-gray-400 border max-w-full' >
             <div>
-                <div className='flex justify-end items-center '>
+                <div className='flex justify-end items-center '  style={{textWrap:"auto"}}>
                     <Button size="small" onClick={handleEditEvent}>
                         <EditIcon />
                     </Button>

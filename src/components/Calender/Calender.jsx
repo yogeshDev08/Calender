@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
@@ -12,11 +12,11 @@ import Ticket from "./Ticket";
 import './calendar.css'
 import CarIcon from "../icons/CarIcon";
 import EditDataModal from "./EditDataModal";
-// import DatePicker from "react-datepicker";
-// import "react-datepicker/dist/react-datepicker.css";
+import jsonData from '../../Constants/Constants.json'
+
 
 const Calendar = () => {
-    const [currentEvents, setCurrentEvents] = useState([]);
+    const [currentEvents, setCurrentEvents] = useState();
     const [selectedDate, setSelectedDate] = useState(null);
     const [openModal, setOpenModal] = useState(false);
     const [eventTitle, setEventTitle] = useState("");
@@ -30,6 +30,27 @@ const Calendar = () => {
             prevEvents.filter((event) => event.id !== eventId)
         );
     };
+
+    useEffect(() => {
+        const transformedEvents = [];
+        jsonData.forEach((dayData) => {
+            dayData.appointments.forEach((appointment) => {
+                transformedEvents.push({
+                    id: appointment.key,
+                    title: `${appointment.customerName}`,
+                    start: appointment.day,
+                    end: appointment.day,
+                    allDay: true,
+                    extendedProps: {
+                        contactInformation: appointment.contactInformation,
+                        jobs: appointment.jobs,
+                        status: appointment.status,
+                    },
+                });
+            });
+        });
+        setCurrentEvents(transformedEvents);
+    }, []);
 
     const PrettoSlider = styled(Slider)({
         color: '#52af77',
@@ -175,9 +196,16 @@ const Calendar = () => {
                     eventOrder="created" // Sort events by the created timestamp
                     events={currentEvents}
                     eventClick={(selected) => { handleEventClick(selected) }}
+                    defaultAllDay={true}
+                    initialEvents={currentEvents}
+                    // initialEvents={[{
+                    //     id: "3a43c1e7-f29b-4ddd-8331-efab4c5fc9ac",
+                    //     start: "2024-11-19T00:00:00Z",
+                    //     title: "FERRER PHILIPPE (MEGANE II)",
+                    //     allDay: true
+                    // }]}
                 />
             </Box>
-
             <EditDataModal
                 eventTitle={eventTitle}
                 setEventTitle={setEventTitle}

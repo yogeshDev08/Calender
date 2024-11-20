@@ -12,5 +12,5 @@
     overflow: hidden; /* Prevent text overflow */
   }
   .fc .fc-daygrid-day-frame{
-    min-height: 70vh;
+    min-height: 85vh;
   }
