@@ -14,7 +14,6 @@ import CarIcon from "../icons/CarIcon";
 import EditDataModal from "./EditDataModal";
 import jsonData from '../../Constants/Constants.json'
 
-
 const Calendar = () => {
     const [currentEvents, setCurrentEvents] = useState();
     const [selectedDate, setSelectedDate] = useState(null);
@@ -106,6 +105,15 @@ const Calendar = () => {
         setEditEventId(event.id);
         setSelectedDate(event.startStr);
 
+        if (event.start) {
+            const startData = new Date(event.start)
+            setStartDate(`${startData.getFullYear()}-${startData.getMonth() + 1}-${startData.getDate()}`)
+        } else setStartDate('')
+
+        if (event.end) {
+            const endData = new Date(event.end)
+            setEndDate(`${endData.getFullYear()}-${endData.getMonth() + 1}-${endData.getDate()}`)
+        } else setEndDate('')
     };
 
     const handleSaveEvent = () => {
@@ -119,7 +127,8 @@ const Calendar = () => {
                         ? {
                             ...event,
                             title: eventTitle,
-                            extendedProps: { description: eventDescription },
+                            start: startDate,
+                            end: endDate,
                         }
                         : event
                 )
@@ -200,12 +209,6 @@ const Calendar = () => {
                     eventClick={(selected) => { handleEventClick(selected) }}
                     defaultAllDay={true}
                     initialEvents={currentEvents}
-                // initialEvents={[{
-                //     id: "3a43c1e7-f29b-4ddd-8331-efab4c5fc9ac",
-                //     start: "2024-11-19T00:00:00Z",
-                //     title: "FERRER PHILIPPE (MEGANE II)",
-                //     allDay: true
-                // }]}
                 />
             </Box>
             <EditDataModal

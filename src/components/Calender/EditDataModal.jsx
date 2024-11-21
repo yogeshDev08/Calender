@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
     Box,
     Modal,
@@ -9,7 +9,6 @@ import {
 
 const EditDataModal = (props) => {
     const {
-        eventDescription,
         eventTitle,
         startDate,
         endDate,
@@ -18,11 +17,14 @@ const EditDataModal = (props) => {
         editEventId,
         handleSaveEvent,
         setEventTitle,
-        setEventDescription,
         setStartDate,
         setEndDate,
-        extendedProps,
+
     } = props;
+
+    useEffect(() => {
+
+    })
 
     return (
         <Modal open={openModal} onClose={() => setOpenModal(false)}>

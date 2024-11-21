@@ -1,15 +1,13 @@
-import { Button } from '@material-ui/core';
+import { Button, IconButton } from '@material-ui/core';
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import EditIcon from '../icons/EditIcon';
 import DeleteIcon from '../icons/DeleteIcon';
 import { formatDate } from 'fullcalendar';
+import { ArrowDropUp } from '@material-ui/icons';
 
 const Ticket = (props) => {
     const { handleDeleteEvent, extendedProps, setOpenModal, setEventTitle, setEventDescription, setEditEventId, setSelectedDate } = props;
 
-
-    const navigate = useNavigate();
     const [isExpanded, setIsExpanded] = useState(false);
 
     const handleEditEvent = () => {
@@ -29,32 +27,27 @@ const Ticket = (props) => {
 
     const beginDateFormatted = formatDate(extendedProps?.extendedProps?.beginDate);
     const endDateFormatted = formatDate(extendedProps?.extendedProps?.endDate)
-
-    console.log("extendedProps", extendedProps)
     return (
-        <div className={` ${extendedProps?.extendedProps?.isConfirmed ? "bg-green-400" : "bg-gray-400"} p-2  border max-w-full`} >
-            <div>
-                <div className='flex justify-end items-center ' style={{ textWrap: "auto" }}>
-                    <Button size="small" onClick={handleEditEvent}>
-                        <EditIcon />
-                    </Button>
-                    <Button size="small" onClick={() => handleDeleteEvent(extendedProps?.id)}>
-                        <DeleteIcon />
-                    </Button>
-                </div>
-
+        <div className={` flex justify-between ${extendedProps?.extendedProps?.isConfirmed ? "bg-yellow-500" : "bg-yellow-700"} p-2  border-none max-w-full`} >
+            <div className='w-[85%] min-w-[85%]'>
                 <h2 style={{ margin: 0 }}>{extendedProps?.title} </h2>
                 <p>{beginDateFormatted} - {endDateFormatted}</p>
-                <div className={`mt-1 rounded ${isExpanded ? 'h-20 overflow-y-scroll' : 'h-6 overflow-hidden'
-                    } transition-all duration-300`}  >
-
+                {isExpanded && <div className={`mt-1 rounded transition-all duration-300`}  >
                     <p>{extendedProps?.extendedProps?.vehicleModel}</p>
                     <p>{extendedProps?.extendedProps?.contactInformation} </p>
                     <p>{extendedProps?.extendedProps?.perdiod}</p>
+                </div>}
+                <div className='flex justify-center w-full'>
+                    <IconButton size="small" className='mt-1 !text-black-500' onClick={toggleDescription} >
+                        {isExpanded ? <ArrowDropUp /> : <ArrowDropUp className='rotate-180' />}
+                    </IconButton>
                 </div>
-                <Button size="small" className='mt-1 !text-blue-500' onClick={toggleDescription} >
-                    {isExpanded ? 'Show Less' : 'Show More'}
-                </Button>
+            </div>
+            <div className='flex flex-col' style={{ textWrap: "auto" }}>
+                <IconButton size="small" onClick={handleEditEvent}><EditIcon /></IconButton>
+                <IconButton size="small" onClick={() => handleDeleteEvent(extendedProps?.id)}>
+                    <DeleteIcon />
+                </IconButton>
             </div>
         </div>
     );
