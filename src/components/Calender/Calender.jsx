@@ -164,6 +164,7 @@ const Calendar = () => {
                                 title: eventInfo.event.title,
                                 description: eventInfo.event.extendedProps.description,
                                 start: eventInfo.event.start,
+                                end: eventInfo.event.end,
                                 extendedProps: eventInfo.event.extendedProps
                             }}
                             setOpenModal={setOpenModal}
@@ -209,6 +210,21 @@ const Calendar = () => {
                     eventClick={(selected) => { handleEventClick(selected) }}
                     defaultAllDay={true}
                     initialEvents={currentEvents}
+                    eventDrop={(info) => {
+                        const updatedEvent = {
+                            id: info.event.id,
+                            title: info.event.title,
+                            start: info.event.start,
+                            end: info.event.end ? info.event.end : null,
+                            extendedProps:  {...info.event.extendedProps}
+                        };
+
+                        setCurrentEvents((prevEvents) =>
+                            prevEvents.map((event) =>
+                                event.id === updatedEvent.id ? updatedEvent : event
+                            )
+                        );
+                    }}
                 />
             </Box>
             <EditDataModal

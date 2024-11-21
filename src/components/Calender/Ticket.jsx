@@ -1,4 +1,4 @@
-import { Button, IconButton } from '@material-ui/core';
+import { IconButton } from '@material-ui/core';
 import { useState } from 'react';
 import EditIcon from '../icons/EditIcon';
 import DeleteIcon from '../icons/DeleteIcon';
@@ -25,8 +25,8 @@ const Ticket = (props) => {
         setIsExpanded((prev) => !prev);
     };
 
-    const beginDateFormatted = formatDate(extendedProps?.extendedProps?.beginDate);
-    const endDateFormatted = formatDate(extendedProps?.extendedProps?.endDate)
+    const beginDateFormatted = formatDate(extendedProps?.start);
+    const endDateFormatted = formatDate(extendedProps?.end)
     return (
         <div className={` flex justify-between ${extendedProps?.extendedProps?.isConfirmed ? "bg-yellow-500" : "bg-yellow-700"} p-2  border-none max-w-full`} >
             <div className='w-[85%] min-w-[85%]'>
